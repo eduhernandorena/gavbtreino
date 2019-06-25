@@ -1,105 +1,111 @@
 <div *ngIf="retorno">
+  <style>
+    .form-control:disabled,
+    .form-control[readonly] {
+      background-color: white
+    }
+  </style>
   <br>
-<form #editForm id="editForm" onload="editForm.resetForm()"  >
-  <div class="jumbotron text-center">
-    <div class="container-fluid">
-      <h1>
-        <ng-container *ngIf="retorno.fantasia != ''; else elseNome">
-          &#09;{{ retorno.nome | titlecase}} - {{ retorno.fantasia | titlecase }} ({{ retorno.situacao | titlecase }})
-        </ng-container>
+  <form #editForm id="editForm" onload="editForm.resetForm()">
+    <div class="jumbotron text-center">
+      <div class="container-fluid">
+        <h1>
+          <ng-container *ngIf="retorno.fantasia != ''; else elseNome">
+            &#09;{{ retorno.nome | titlecase}} - {{ retorno.fantasia | titlecase }} ({{ retorno.situacao | titlecase }})
+          </ng-container>
 
-        <ng-template #elseNome>
-          {{ retorno.nome | titlecase }} ({{ retorno.situacao | titlecase }})
-        </ng-template>
-      </h1>
-      <ng-container *ngIf="retorno.logradouro; else elseEnder">
+          <ng-template #elseNome>
+            {{ retorno.nome | titlecase }} ({{ retorno.situacao | titlecase }})
+          </ng-template>
+        </h1>
+        <ng-container *ngIf="retorno.logradouro; else elseEnder">
           <h4 class="card-subtitle mb-2 text-muted">{{ retorno.cnpj }}</h4>
           <h5 class="card-text">{{ retorno.logradouro | titlecase }}, {{ retorno.numero }} -
             {{ retorno.complemento | titlecase }}</h5>
           <h5 class="card-text">{{ retorno.bairro | titlecase }} - {{ retorno.municipio | titlecase }}/{{ retorno.uf }}
           </h5>
           <h5 class="card-text">{{ retorno.cep }}</h5>
-      </ng-container>
-      <ng-template #elseEnder>
+        </ng-container>
+        <ng-template #elseEnder>
           <h4 class="card-subtitle mb-2 text-muted">{{ retorno.cnpj }}</h4>
           <h5 class="card-text">{{ retorno.endereco.logradouro | titlecase }}, {{ retorno.endereco.numero }} -
             {{ retorno.endereco.complemento | titlecase }}</h5>
           <h5 class="card-text">{{ retorno.endereco.bairro | titlecase }} -
             {{ retorno.endereco.municipio | titlecase }}/{{ retorno.endereco.uf }}</h5>
           <h5 class="card-text">{{ retorno.endereco.cep }}</h5>
-      </ng-template>
+        </ng-template>
 
 
-    </div>
-  </div>
-
-
-  <h5>Atividade Principal</h5>
-  <input readonly type="text" class="form-control"
-    value="{{ retorno.atividade_principal[0].code }} - {{ retorno.atividade_principal[0].text | titlecase }}">
-  <br>
-
-  <form>
-    <div class="input-group mb-3 input-group-sm">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Data de Abertura</span>
       </div>
-      <ng-container *ngIf="retorno.endereco; else elseDate">
+    </div>
+
+
+    <h5>Atividade Principal</h5>
+    <input readonly type="text" class="form-control"
+      value="{{ retorno.atividade_principal[0].code }} - {{ retorno.atividade_principal[0].text | titlecase }}">
+    <br>
+
+    <form>
+      <div class="input-group mb-3 input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Data de Abertura</span>
+        </div>
+        <ng-container *ngIf="retorno.endereco; else elseDate">
           <input readonly type="text" class="form-control" value="{{ retorno.abertura | date: 'dd/MM/yyyy' }}">
-      </ng-container>
-      <ng-template #elseDate>
+        </ng-container>
+        <ng-template #elseDate>
           <input readonly type="text" class="form-control" value="{{ retorno.abertura}}">
-      </ng-template>
-      
-      
-    </div>
-    <div class="input-group mb-3 input-group-sm">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Porte</span>
+        </ng-template>
+
+
       </div>
-      <input readonly type="text" class="form-control" value="{{ retorno.porte | titlecase }}">
-    </div>
-    <div class="input-group mb-3 input-group-sm">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Tipo</span>
+      <div class="input-group mb-3 input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Porte</span>
+        </div>
+        <input readonly type="text" class="form-control" value="{{ retorno.porte | titlecase }}">
       </div>
-      <input readonly type="text" class="form-control" value="{{ retorno.tipo | titlecase }}">
-    </div>
-    <div class="input-group mb-3 input-group-sm">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Porte</span>
+      <div class="input-group mb-3 input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Tipo</span>
+        </div>
+        <input readonly type="text" class="form-control" value="{{ retorno.tipo | titlecase }}">
       </div>
-      <input readonly type="text" class="form-control" value="{{ retorno.natureza_juridica | titlecase }}">
-    </div>
-    <div class="input-group mb-3 input-group-sm">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Capital Social</span>
+      <div class="input-group mb-3 input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Porte</span>
+        </div>
+        <input readonly type="text" class="form-control" value="{{ retorno.natureza_juridica | titlecase }}">
       </div>
-      <input readonly type="text" class="form-control" value="{{ retorno.capital_social | currency:'BRL' }}">
+      <div class="input-group mb-3 input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Capital Social</span>
+        </div>
+        <input readonly type="text" class="form-control" value="{{ retorno.capital_social | currency:'BRL' }}">
+      </div>
+    </form>
+    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#atv-collapse">Atividades
+      Secundárias</button>
+
+    <div id="atv-collapse" class="collapse">
+      <ul *ngIf="retorno.atividades_secundarias" class="list-group">
+        <li *ngFor="let atv of retorno.atividades_secundarias" class="list-group-item">
+          <app-activity [atividade]="atv"></app-activity>
+        </li>
+      </ul>
+    </div>
+
+    <br>
+    <br>
+
+    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#qsa-collapse">Socios</button>
+
+    <div id="qsa-collapse" class="collapse">
+      <ul *ngIf="retorno.qsa" class="list-group">
+        <li *ngFor="let socio of retorno.qsa" class="list-group-item">
+          <app-socio [socio]="socio"></app-socio>
+        </li>
+      </ul>
     </div>
   </form>
-  <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#atv-collapse">Atividades
-    Secundárias</button>
-
-  <div id="atv-collapse" class="collapse">
-    <ul *ngIf="retorno.atividades_secundarias" class="list-group">
-      <li *ngFor="let atv of retorno.atividades_secundarias" class="list-group-item">
-        <app-activity [atividade]="atv"></app-activity>
-      </li>
-    </ul>
-  </div>
-
-  <br>
-  <br>
-
-  <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#qsa-collapse">Socios</button>
-
-  <div id="qsa-collapse" class="collapse">
-    <ul *ngIf="retorno.qsa" class="list-group">
-      <li *ngFor="let socio of retorno.qsa" class="list-group-item">
-        <app-socio [socio]="socio"></app-socio>
-      </li>
-    </ul>
-  </div>
-</form>
 </div>
