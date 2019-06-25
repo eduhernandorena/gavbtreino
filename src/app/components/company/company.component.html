@@ -1,0 +1,11 @@
+<div class="col-sm-4 form-group">
+    <label>CNPJ</label>
+    <input id="cnpj" type="text" mask="00.000.000/0000-00" class="form-control item" #cnpj
+        (keyup.enter)="onEnter(cnpj.value)" placeholder="Campo de Cnpj">
+
+    <div class="alert alert-danger alert-dismissible fade {{ show }}" style="margin-top: 2%">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ msg_error }}
+    </div>
+</div>
+<app-company-response [retorno]="retorno" #ret></app-company-response>
