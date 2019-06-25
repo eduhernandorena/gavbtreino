@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ConsultaService {
 
-  public baseUrl: string = 'http://localhost:8080/client/company/';
+  public baseUrl: string = 'http://localhost:8080/company/';
   retorno: any;
 
   constructor(private http: HttpClient) { }
