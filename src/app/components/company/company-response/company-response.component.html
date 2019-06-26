@@ -1,10 +1,4 @@
 <div *ngIf="retorno" style="padding-bottom: 10px">
-  <style>
-    .form-control:disabled,
-    .form-control[readonly] {
-      background-color: white
-    }
-  </style>
   <br>
   <form #editForm id="editForm" onload="editForm.resetForm()">
     <div class="jumbotron text-center">
@@ -34,8 +28,6 @@
             {{ retorno.endereco.municipio | titlecase }}/{{ retorno.endereco.uf }}</h5>
           <h5 class="card-text">{{ retorno.endereco.cep }}</h5>
         </ng-template>
-
-
       </div>
     </div>
 
@@ -45,7 +37,6 @@
       value="{{ retorno.atividade_principal[0].code }} - {{ retorno.atividade_principal[0].text | titlecase }}">
     <br>
 
-    <form>
       <div class="input-group mb-3 input-group-sm">
         <div class="input-group-prepend">
           <span class="input-group-text">Data de Abertura</span>
@@ -83,7 +74,7 @@
         </div>
         <input readonly type="text" class="form-control" value="{{ retorno.capital_social | currency:'BRL' }}">
       </div>
-    </form>
+
     <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#atv-collapse">Atividades
       Secundárias</button>
 
@@ -96,7 +87,7 @@
     </div>
 
     <br>
-    <br>
+    <br>  
 
     <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#qsa-collapse">Socios</button>
 
