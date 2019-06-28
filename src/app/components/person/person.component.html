@@ -1,21 +1,71 @@
-<div class="container-fluid text-center">
-    <form action="" #formCadPf style="margin-top: 20px">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control col-sm-4" placeholder="Nome Completo" id="name" name="name">
+<mat-card class="col-sm-8 mt-4">
+    <div class="container-fluid">
+        <form [formGroup]="formCliente">
+            <div class="col-sm-12 form-group">
+                <mat-form-field appearance="legacy" class="col-sm-6">
+                    <mat-label>Nome</mat-label>
+                    <input matInput required minlength="3" type="text" class="form-control col-sm-6"
+                        placeholder="Nome Completo" formControlName="nome" name="nome" (blur)="onBlurTouched()">
+                </mat-form-field>
+                <mat-form-field appearance="legacy" class="col-sm-6">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" class="form-control col-sm-6 ml-2" placeholder="example@domain.com"
+                        name="email" formControlName="email" (blur)="onBlurTouched()">
+                </mat-form-field>
+            </div>
 
-            <input type="email" class="form-control col-sm-4" placeholder="Email" id="email" name="email"
-                style="margin-left: 10px">
-        </div>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control col-sm-4" mask="000.000.000-00" placeholder="Cpf" id="cpf"
-                name="cpf">
-            <input class="form-control col-sm-4" type="date" value="01/01/2001" id="start" style="margin-left: 10px">
-        </div>
+            <div class="col-sm-12 form-group">
+                <mat-form-field appearance="legacy" class="col-sm-6">
+                    <mat-label>Cpf</mat-label>
+                    <input matInput type="text" mask="000.000.000-00" class="form-control" formControlName="cpf"
+                        name="cpf" (blur)="onBlurTouched()">
+                </mat-form-field>
+                <mat-form-field appearance="legacy" class="col-sm-6">
+                    <mat-label>Data de Nascimento</mat-label>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <input matInput [matDatepicker]="picker" placeholder="Escolha a data..." class="form-control"
+                        formControlName="abertura" name="abertura" (blur)="onBlurTouched()">
+                </mat-form-field>
+            </div>
 
-        <div class="input-group mb-3">
-            <input type="text" class="form-control col-4" placeholder="Cidade" >
-            <input type="text" class="form-control col-2" placeholder="Estado">
-            <input type="text" class="form-control col-2" placeholder="Cep">
-        </div>
-    </form>
-</div>
+            <div class="col-sm-12">
+                <mat-form-field appearance="legacy" class="col-sm-8">
+                    <mat-label>Rua</mat-label>
+                    <input matInput type="text" class="form-control" formControlName="logradouro" name="logradouro"
+                        (blur)="onBlurTouched()">
+                </mat-form-field>
+                <mat-form-field appearance="legacy" class="col-sm-4">
+                    <mat-label>Bairro</mat-label>
+                    <input matInput type="text" class="form-control" formControlName="bairro" name="bairro"
+                        (blur)="onBlurTouched()">
+                </mat-form-field>
+            </div>
+
+
+            <div class="col-sm-12">
+                <mat-form-field appearance="legacy" class="col-sm-6">
+                    <mat-label>Cidade</mat-label>
+                    <input matInput type="text" class="form-control" formControlName="cidade" name="cidade"
+                        (blur)="onBlurTouched()">
+                </mat-form-field>
+                <mat-form-field appearance="legacy" class="col-sm-3">
+                    <mat-label>Estado</mat-label>
+                    <input matInput type="text" mask="AA" class="form-control" formControlName="uf" name="uf"
+                        (blur)="onBlurTouched()">
+                </mat-form-field>
+                <mat-form-field appearance="legacy" class="col-sm-3">
+                    <mat-label>Cep</mat-label>
+                    <input matInput type="text" mask="00000-000" class="form-control" formControlName="cep" name="cep"
+                      (blur)="onBlurTouched()">
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-5 ml-4">
+                <button [disabled]="!formCliente.valid" mat-stroked-button type="submit" (click)="salvar()"
+                    class="col-sm-5 btn btn-primary">Salvar</button>
+                <button [disabled]="hasUntouched()" mat-stroked-button type="reset" class="ml-2 col-sm-5">Clear</button>
+            </div>
+        </form>
+    </div>
+</mat-card>

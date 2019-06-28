@@ -1,7 +1,9 @@
+import { Company } from './../../models/company';
 import { CompanyResponseComponent } from './company-response/company-response.component';
 import { Router } from '@angular/router';
 import { ConsultaService } from './../../consulta.service';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-company',
@@ -10,11 +12,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyComponent implements OnInit {
 
-  retorno: any;
-  show: string;
   msg_error: string;
+  durationInSeconds: number = 5;
+  company: Company[] = [];
 
-  constructor(private data: ConsultaService, private router: Router) { }
+  constructor(private data: ConsultaService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -23,21 +25,25 @@ export class CompanyComponent implements OnInit {
     const regex = /[\/\.\-]/g;
     value = value.replace(regex, "");
     if (this.validarCNPJ(value)) {
-      this.data.getRegs(value).subscribe(data => {
-        this.retorno = data;
-        console.log(this.retorno);
-        if (this.retorno.status == 'ERROR') {
-          this.retorno = null;
-          this.show = 'show';
+      this.data.getRegs(value).subscribe(company => {
+        console.log(company);
+        if (company.status == 'ERROR') {
+          this.company = null;
           this.msg_error = 'Nenhum registro encontrado!';
+          this.snackBar.open(this.msg_error, null, { duration: this.durationInSeconds * 1000, panelClass: ['snackBar-fail'] });
         } else {
-          this.show = '';
-        }
-        console.log(this.retorno);
+          this.company = company;
+          console.log(this.company);
+        } 
+      }, err => {
+        this.company = null;
+        this.msg_error = 'Problema com a conexão!';
+        this.snackBar.open(this.msg_error, null, { duration: this.durationInSeconds * 1000, panelClass: ['snackBar-fail'] });
+        console.log(err);
       });
     } else {
-      this.show = 'show';
       this.msg_error = 'Cnpj Inválido!';
+      this.snackBar.open(this.msg_error, null, { duration: this.durationInSeconds * 1000, panelClass: ['snackBar-fail'] });
     }
 
   }

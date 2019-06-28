@@ -1,102 +1,98 @@
-<div *ngIf="retorno" style="padding-bottom: 10px">
+<div *ngIf="company" style="padding-bottom: 10px">
   <br>
   <form #editForm id="editForm" onload="editForm.resetForm()">
-    <div class="jumbotron text-center">
-      <div class="container-fluid">
-        <h1>
-          <ng-container *ngIf="retorno.fantasia != ''; else elseNome">
-            &#09;{{ retorno.nome | titlecase}} - {{ retorno.fantasia | titlecase }} ({{ retorno.situacao | titlecase }})
-          </ng-container>
-
-          <ng-template #elseNome>
-            {{ retorno.nome | titlecase }} ({{ retorno.situacao | titlecase }})
-          </ng-template>
-        </h1>
-        <ng-container *ngIf="retorno.logradouro; else elseEnder">
-          <h4 class="card-subtitle mb-2 text-muted">{{ retorno.cnpj }}</h4>
-          <h5 class="card-text">{{ retorno.logradouro | titlecase }}, {{ retorno.numero }} -
-            {{ retorno.complemento | titlecase }}</h5>
-          <h5 class="card-text">{{ retorno.bairro | titlecase }} - {{ retorno.municipio | titlecase }}/{{ retorno.uf }}
-          </h5>
-          <h5 class="card-text">{{ retorno.cep }}</h5>
+    <mat-card class="mb-4" style="text-align: center; background-color: #E9ECEF">
+      <h1>
+        <ng-container *ngIf="company.fantasia != ''; else elseNome">
+          &#09;{{ company.nome | titlecase}} - {{ company.fantasia | titlecase }} ({{ company.situacao | titlecase }})
         </ng-container>
-        <ng-template #elseEnder>
-          <h4 class="card-subtitle mb-2 text-muted">{{ retorno.cnpj }}</h4>
-          <h5 class="card-text">{{ retorno.endereco.logradouro | titlecase }}, {{ retorno.endereco.numero }} -
-            {{ retorno.endereco.complemento | titlecase }}</h5>
-          <h5 class="card-text">{{ retorno.endereco.bairro | titlecase }} -
-            {{ retorno.endereco.municipio | titlecase }}/{{ retorno.endereco.uf }}</h5>
-          <h5 class="card-text">{{ retorno.endereco.cep }}</h5>
-        </ng-template>
-      </div>
-    </div>
 
+        <ng-template #elseNome>
+          {{ company.nome | titlecase }} ({{ company.situacao | titlecase }})
+        </ng-template>
+      </h1>
+      <ng-container *ngIf="company.logradouro; else elseEnder">
+        <h4 class="card-subtitle mb-2 text-muted">{{ company.cnpj }}</h4>
+        <h5 class="card-text">{{ company.logradouro | titlecase }}, {{ company.numero }} -
+          {{ company.complemento | titlecase }}</h5>
+        <h5 class="card-text">{{ company.bairro | titlecase }} - {{ company.municipio | titlecase }}/{{ company.uf }}
+        </h5>
+        <h5 class="card-text">{{ company.cep }}</h5>
+      </ng-container>
+      <ng-template #elseEnder>
+        <h4 class="card-subtitle mb-2 text-muted">{{ company.cnpj }}</h4>
+        <h5 class="card-text">{{ company.endereco.logradouro | titlecase }}, {{ company.endereco.numero }} -
+          {{ company.endereco.complemento | titlecase }}</h5>
+        <h5 class="card-text">{{ company.endereco.bairro | titlecase }} -
+          {{ company.endereco.municipio | titlecase }}/{{ company.endereco.uf }}</h5>
+        <h5 class="card-text">{{ company.endereco.cep }}</h5>
+      </ng-template>
+    </mat-card>
 
     <h5>Atividade Principal</h5>
     <input readonly type="text" class="form-control"
-      value="{{ retorno.atividade_principal[0].code }} - {{ retorno.atividade_principal[0].text | titlecase }}">
+      value="{{ company.atividade_principal[0].code }} - {{ company.atividade_principal[0].text | titlecase }}">
     <br>
 
-      <div class="input-group mb-3 input-group-sm">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Data de Abertura</span>
-        </div>
-        <ng-container *ngIf="retorno.endereco; else elseDate">
-          <input readonly type="text" class="form-control" value="{{ retorno.abertura | date: 'dd/MM/yyyy' }}">
-        </ng-container>
-        <ng-template #elseDate>
-          <input readonly type="text" class="form-control" value="{{ retorno.abertura}}">
-        </ng-template>
+    <div class="input-group mb-3 input-group-sm">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Data de Abertura</span>
+      </div>
+      <ng-container *ngIf="company.endereco; else elseDate">
+        <input readonly type="text" class="form-control" value="{{ company.abertura | date: 'dd/MM/yyyy' }}">
+      </ng-container>
+      <ng-template #elseDate>
+        <input readonly type="text" class="form-control" value="{{ company.abertura}}">
+      </ng-template>
 
 
+    </div>
+    <div class="input-group mb-3 input-group-sm">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Porte</span>
       </div>
-      <div class="input-group mb-3 input-group-sm">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Porte</span>
-        </div>
-        <input readonly type="text" class="form-control" value="{{ retorno.porte | titlecase }}">
+      <input readonly type="text" class="form-control" value="{{ company.porte | titlecase }}">
+    </div>
+    <div class="input-group mb-3 input-group-sm">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Tipo</span>
       </div>
-      <div class="input-group mb-3 input-group-sm">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Tipo</span>
-        </div>
-        <input readonly type="text" class="form-control" value="{{ retorno.tipo | titlecase }}">
+      <input readonly type="text" class="form-control" value="{{ company.tipo | titlecase }}">
+    </div>
+    <div class="input-group mb-3 input-group-sm">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Porte</span>
       </div>
-      <div class="input-group mb-3 input-group-sm">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Porte</span>
-        </div>
-        <input readonly type="text" class="form-control" value="{{ retorno.natureza_juridica | titlecase }}">
+      <input readonly type="text" class="form-control" value="{{ company.natureza_juridica | titlecase }}">
+    </div>
+    <div class="input-group mb-3 input-group-sm">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Capital Social</span>
       </div>
-      <div class="input-group mb-3 input-group-sm">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Capital Social</span>
-        </div>
-        <input readonly type="text" class="form-control" value="{{ retorno.capital_social | currency:'BRL' }}">
-      </div>
-
-    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#atv-collapse">Atividades
-      Secundárias</button>
-
-    <div id="atv-collapse" class="collapse">
-      <ul *ngIf="retorno.atividades_secundarias" class="list-group">
-        <li *ngFor="let atv of retorno.atividades_secundarias" class="list-group-item">
-          <app-activity [atividade]="atv"></app-activity>
-        </li>
-      </ul>
+      <input readonly type="text" class="form-control" value="{{ company.capital_social | currency:'BRL' }}">
     </div>
 
-    <br>
-    <br>  
-
-    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#qsa-collapse">Socios</button>
-
-    <div id="qsa-collapse" class="collapse">
-      <ul *ngIf="retorno.qsa" class="list-group">
-        <li *ngFor="let socio of retorno.qsa" class="list-group-item">
-          <app-socio [socio]="socio"></app-socio>
-        </li>
-      </ul>
-    </div>
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header style="background-color: #E9ECEF">
+          <mat-panel-title>
+            Atividades Secundárias
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul *ngIf="company.atividades_secundarias" class="list-group">
+          <li *ngFor="let atv of company.atividades_secundarias" class="list-group-item">
+            <app-activity [atividade]="atv"></app-activity>
+          </li>
+        </ul>
+      </mat-expansion-panel>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header style="background-color: #E9ECEF">
+          <mat-panel-title>
+            Sócios
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-socio [socios]=company.qsa></app-socio>
+      </mat-expansion-panel>
+    </mat-accordion>
   </form>
 </div>

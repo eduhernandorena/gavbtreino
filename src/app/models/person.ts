@@ -1,11 +1,6 @@
-import { Address } from './address';
+import { People } from './people';
 
-export class Person {
-    name: string = '';
-    cfp: string = '';
-    active: string = 'ATIVO';
-    email: string = '';
-    start: Date = null;
-    address: Address = null;
-    phone: string = '';
+export class Person extends People {
+    nome: string = '';
+    cpf: string = '';
 }

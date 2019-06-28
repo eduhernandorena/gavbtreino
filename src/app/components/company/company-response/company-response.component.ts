@@ -1,3 +1,4 @@
+import { Company } from './../../../models/company';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,10 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CompanyResponseComponent implements OnInit {
 
-  @Input() retorno = null;
+  @Input() company: Company;
   constructor() { }
 
   ngOnInit() {
+    this.company = null;
   }
 
 }

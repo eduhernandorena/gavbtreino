@@ -12,6 +12,9 @@ import { CompanyComponent } from './components/company/company.component';
 import { ActivityComponent } from './components/company/activity/activity.component';
 import { SocioComponent } from './components/company/socio/socio.component';
 import { CompanyResponseComponent } from './components/company/company-response/company-response.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './modulos/material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -22,7 +25,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     CompanyComponent,
     ActivityComponent,
     SocioComponent,
-    CompanyResponseComponent
+    CompanyResponseComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +33,10 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     HttpClientModule,
     PeopleModule,
     NgxMaskModule.forRoot(options),
+    BrowserAnimationsModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

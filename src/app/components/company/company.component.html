@@ -1,13 +1,10 @@
-<div class="container-fluid text-center">
-    <br>
-    <div class="col-sm-4 form-group">
-        <input id="cnpj" type="text" mask="00.000.000/0000-00" class="form-control item" #cnpj
-            (keyup.enter)="onEnter(cnpj.value)" placeholder="Cnpj">
-
-        <div class="alert alert-danger alert-dismissible fade {{ show }}" style="margin-top: 2%">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            {{ msg_error }}
-        </div>
+<mat-card class="col-sm-8 mt-4">
+    <div class="container-fluid">
+        <br>
+        <mat-form-field appearance="legacy" class="col-md-6">
+            <mat-label>Cnpj</mat-label>
+            <input matInput id="cnpj" mask="00.000.000/0000-00" #cnpj (keyup.enter)="onEnter(cnpj.value)">
+        </mat-form-field>
     </div>
-</div>
-<app-company-response [retorno]="retorno" #ret></app-company-response>
+    <app-company-response [company]="company"></app-company-response>
+</mat-card>

@@ -1,3 +1,4 @@
+import { Partner } from './../../../models/partner';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,11 +8,18 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SocioComponent implements OnInit {
 
-  @Input() socio;
-  
+  @Input() socios: Partner[];
+
+  displayedColumns: string[] = ['cod', 'cargo', 'nome'];
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  mySplit = function (string, nb) {
+    var array = string.split('-');
+    return array[nb];
   }
 
 }

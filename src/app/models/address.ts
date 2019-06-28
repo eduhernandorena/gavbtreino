@@ -1,9 +1,9 @@
 export class Address {
-    street: string = '';
-    number: number;
-    complement: string = '';
-    district: string = '';
+    logradouro: string = '';
+    numero: number;
+    complemento: string = '';
+    bairro: string = '';
     cep: string = '';
-    state: string = '';
-    city: string = '';
+    uf: string = '';
+    cidade: string = '';
 }
