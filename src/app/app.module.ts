@@ -15,6 +15,9 @@ import { CompanyResponseComponent } from './components/company/company-response/
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modulos/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UnidadeFederacaoComponent } from './components/unidade-federacao/unidade-federacao.component';
+import { PaisComponent } from './components/pais/pais.component';
+import { MunicipioComponent } from './components/municipio/municipio.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -26,6 +29,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     ActivityComponent,
     SocioComponent,
     CompanyResponseComponent,
+    UnidadeFederacaoComponent,
+    PaisComponent,
+    MunicipioComponent,
   ],
   imports: [
     BrowserModule,

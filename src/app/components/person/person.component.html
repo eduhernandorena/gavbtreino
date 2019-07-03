@@ -22,9 +22,7 @@
                 </mat-form-field>
                 <mat-form-field appearance="legacy" class="col-sm-6">
                     <mat-label>Data de Nascimento</mat-label>
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                    <input matInput [matDatepicker]="picker" placeholder="Escolha a data..." class="form-control"
+                    <input matInput class="form-control date-mask" autocomplete="off"
                         formControlName="abertura" name="abertura" (blur)="onBlurTouched()">
                 </mat-form-field>
             </div>

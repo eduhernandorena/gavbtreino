@@ -1,0 +1,26 @@
+<mat-card class="col-sm-8 mt-4">
+  <mat-card-header>
+    <mat-card-title>Cadastro de País</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="formPais" class="col-sm-8 form-group">
+      <mat-form-field appearance="legacy" class="col-sm-8">
+        <mat-label>Nome</mat-label>
+        <input matInput required minlength="3" type="text" class="form-control" formControlName="nome"
+          name="nome">
+      </mat-form-field>
+      <mat-form-field appearance="legacy" class="col-sm-4">
+        <mat-label>Sigla</mat-label>
+        <input matInput type="text" class="form-control ml-2" name="sigla" formControlName="sigla">
+      </mat-form-field>
+      <mat-form-field appearance="legacy" class="col-sm-4 form-group">
+        <mat-label>Cód</mat-label>
+        <input matInput type="text" class="form-control" name="code" formControlName="code">
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button class="form-control col-sm-2 btn btn-success">Salvar</button>
+    <button mat-button class="form-control col-sm-2 btn btn-danger" type="reset">Limpar</button>
+  </mat-card-actions>
+</mat-card>
